@@ -8,7 +8,7 @@ public class PlayerMove : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("Fuerza de movimiento en newtons / seg")]
-    [Range(0, 500)]
+    [Range(0, 2000)]
     public float velocity;
 
     [SerializeField]
@@ -45,7 +45,7 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.AddRelativeForce(direction * velocity);
-        rb.AddRelativeTorque(0, mouseX * rotationVelocity, 0);
+        rb.AddRelativeForce(direction * velocity * Time.deltaTime);
+        rb.AddRelativeTorque(0, mouseX * rotationVelocity * Time.deltaTime, 0);
     }
 }

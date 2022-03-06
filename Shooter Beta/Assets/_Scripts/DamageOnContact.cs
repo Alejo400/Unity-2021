@@ -12,8 +12,16 @@ public class DamageOnContact : MonoBehaviour
         Life life = other.GetComponent<Life>();
 
         if (life != null)
+        {
             life.AmountLife -= damage;
+            gameObject.SetActive(false);
+        }
 
     }
+
+    /*private void OnTriggerExit(Collider other)
+    {
+        
+    }*/
 
 }

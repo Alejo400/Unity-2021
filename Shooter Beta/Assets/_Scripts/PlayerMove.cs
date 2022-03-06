@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,13 +17,21 @@ public class PlayerMove : MonoBehaviour
     public float rotationVelocity;
 
     float moveHorizontal, moveVertical, mouseX, space, angle;
+    public bool isMoving;
     Vector3 direction;
 
-    Rigidbody rb;
+    Rigidbody _rb;
+    Animator _animator;
+
+    private void Awake()
+    {
+        isMoving = true;
+    }
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
+        _animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -31,8 +40,26 @@ public class PlayerMove : MonoBehaviour
 
         moveHorizontal = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
-        direction = new Vector3(moveHorizontal,0,moveVertical).normalized;
-        
+
+        //isMoving has participation in PlayerShoot.cs
+        if (isMoving)
+            direction = new Vector3(moveHorizontal, 0, moveVertical).normalized;
+        else
+            direction = Vector3.zero;
+
+        _animator.SetFloat("velocity", _rb.velocity.magnitude);
+        _animator.SetFloat("moveX", moveHorizontal);
+        _animator.SetFloat("moveY", moveVertical);
+
+        /* Otra forma de ejecutar las animaciones si la velocidad es mayor que 0 con bool
+         * if (Mathf.Abs(moveHorizontal) > 0 || Mathf.Abs(moveVertical) > 0)
+        {   _animator.SetBool("velocity", true);
+            _animator.SetFloat("moveX", moveHorizontal);
+            _animator.SetFloat("moveY", moveVertical);
+        }
+        else
+          _animator.SetBool("velocity",false);*/
+
         //space = velocity * Time.deltaTime;
         //transform.Translate(direction * space);
 
@@ -45,7 +72,7 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.AddRelativeForce(direction * velocity * Time.deltaTime);
-        rb.AddRelativeTorque(0, mouseX * rotationVelocity * Time.deltaTime, 0);
+        _rb.AddRelativeForce(direction * velocity * Time.deltaTime);
+        _rb.AddRelativeTorque(0, mouseX * rotationVelocity * Time.deltaTime, 0);
     }
 }

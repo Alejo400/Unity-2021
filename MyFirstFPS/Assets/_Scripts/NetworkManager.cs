@@ -30,8 +30,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("Sala encontrada");
         //PhotonNetwork.JoinRandomRoom();
-        //JoinInRoom();
-        MakeRoom();
+        JoinInRoom();
+        //MakeRoom();
     }
 
     public void JoinInRoom()

@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 50
+  requiredSound: 0
   attackSound: {fileID: 5354437893293294190}
 --- !u!114 &827324901006691246
 MonoBehaviour:

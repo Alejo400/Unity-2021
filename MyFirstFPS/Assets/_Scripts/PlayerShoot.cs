@@ -22,8 +22,11 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PhotonNetwork.InRoom && !photonView.IsMine)
+        {
+            return;
+        }
         Shoot();
-        ConfigPhotonView();
     }
     void Shoot()
     {
@@ -47,13 +50,6 @@ public class PlayerShoot : MonoBehaviour
                     return;
                 }
             }
-        }
-    }
-    void ConfigPhotonView()
-    {
-        if (PhotonNetwork.IsConnected && photonView.IsMine == false)
-        {
-            return;
         }
     }
 }

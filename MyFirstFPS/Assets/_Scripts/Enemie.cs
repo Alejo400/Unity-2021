@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Photon.Pun;
 
 public class Enemie : MonoBehaviour
 {
     NavMeshAgent agent;
-    GameObject player;
+    GameObject[] players;
     Animator _animator;
     float velocity;
     bool onAttack;
@@ -14,14 +15,17 @@ public class Enemie : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        players = GameObject.FindGameObjectsWithTag("Player");
         _animator = GetComponent<Animator>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (PhotonNetwork.InRoom && !PhotonNetwork.IsMasterClient)
+        {
+            return;
+        }
         Movement();
         onAttack = agent.remainingDistance >= 2 ? false : true;
         Attack(onAttack);
@@ -29,7 +33,7 @@ public class Enemie : MonoBehaviour
 
     void Movement()
     {
-        agent.destination = player.transform.position;
+        agent.destination = players[Random.Range(0,PhotonNetwork.CountOfPlayersInRooms)].transform.position;
         velocity = agent.velocity.magnitude;
         _animator.SetFloat("velocity", velocity);
         _animator.SetFloat("moveX", agent.velocity.x);

@@ -15,6 +15,7 @@ public class LookForward : MonoBehaviour
     public float laserWidth = 0.05f, laserMaxLength = 5f;
     Vector3[] initLaserPositions;
     public PhotonView photonView;
+
     private void Start()
     {
         initLaserPositions = new Vector3[2] { Vector3.zero, Vector3.zero };
@@ -22,7 +23,10 @@ public class LookForward : MonoBehaviour
     }
     void Update()
     {
-        ConfigPhotonView();
+        if (PhotonNetwork.InRoom && !photonView.IsMine)
+        {
+            return;
+        }
         GenerateLaser();
     }
     void GenerateLaser()
@@ -47,13 +51,6 @@ public class LookForward : MonoBehaviour
                 laserLineRenderer.enabled = false;
                 laserLineRenderer.SetPositions(initLaserPositions);
             }
-        }
-    }
-    void ConfigPhotonView()
-    {
-        if (PhotonNetwork.IsConnected && photonView.IsMine == false)
-        {
-            return;
         }
     }
 }

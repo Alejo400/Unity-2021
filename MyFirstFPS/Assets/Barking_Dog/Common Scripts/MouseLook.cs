@@ -55,6 +55,7 @@ public class MouseLook : MonoBehaviour
 	void Update ()
 	{
 		ConfigPhotonView();
+
 		// Ensure the cursor is always locked when set
 		//Screen.lockCursor = lockCursor;
 		Cursor.lockState = lockCursor;
@@ -125,8 +126,9 @@ public class MouseLook : MonoBehaviour
 
 	void ConfigPhotonView()
 	{
-		if (PhotonNetwork.IsConnected && photonView.IsMine == false)
+		if (PhotonNetwork.InRoom && !photonView.IsMine)
 		{
+			gameObject.SetActive(false);
 			return;
 		}
 	}

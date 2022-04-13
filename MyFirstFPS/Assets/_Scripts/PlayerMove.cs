@@ -43,20 +43,14 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (PhotonNetwork.InRoom && !photonView.IsMine)
+        {
+            return;
+        }
         MovePosition();
         Animations();
         AimShoot();
         PlaySFX();
-        ConfigPhotonView();
-    }
-    void ConfigPhotonView()
-    {
-        //PhotonNetwork.InRoom && !photonView.IsMine
-        if (PhotonNetwork.IsConnected && photonView.IsMine == false)
-        {
-            return;
-        }
     }
     /// <summary>
     /// Move in X and Z using physics forces
@@ -114,6 +108,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetButton("Fire2"))
         {
+            isMoving = false;
             isPointing = true;
             isRun = false;
             _animator.SetBool("aim", true);

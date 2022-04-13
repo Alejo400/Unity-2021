@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4399105045229531696}
   - component: {fileID: 4399105045247883120}
   - component: {fileID: 4399105045247905488}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4775,7 +4775,7 @@ GameObject:
   - component: {fileID: 4399105045229531698}
   - component: {fileID: 4399105045247883122}
   - component: {fileID: 4399105045247905490}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9539,7 +9539,7 @@ GameObject:
   - component: {fileID: 4399105045229531700}
   - component: {fileID: 4399105045247883124}
   - component: {fileID: 4399105045247905492}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: LightningRing
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -14303,7 +14303,7 @@ GameObject:
   - component: {fileID: 4399105045229531702}
   - component: {fileID: 4399105045247883126}
   - component: {fileID: 4399105045247905494}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19069,9 +19069,9 @@ GameObject:
   - component: {fileID: 4865127790402465662}
   - component: {fileID: 340515229478327303}
   - component: {fileID: 2327117050361743679}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: LightningRotateBall
-  m_TagString: Player
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19132,6 +19132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 50
+  attackSound: {fileID: 0}
 --- !u!114 &2327117050361743679
 MonoBehaviour:
   m_ObjectHideFlags: 0

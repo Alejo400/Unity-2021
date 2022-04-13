@@ -6,21 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
-    public static RoomManager sharedIntance;
 
-    private void Start()
-    {
-        if(sharedIntance == null)
-        {
-            sharedIntance = this;
-            //por si cambiamos de escena, preservar valores
-            //DontDestroyOnLoad(sharedIntance);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
     private void OnEnable()
     {
         //Suscribiendonos al OnSceneLoaded
@@ -40,7 +26,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Vector3 spawnPosition = new Vector3(-32f,0,Random.Range(1,8));
+        Vector3 spawnPosition = new Vector3(0,0,Random.Range(1,5));
         if (PhotonNetwork.InRoom)
         {
             PhotonNetwork.Instantiate("HPCharacter", spawnPosition, Quaternion.identity);

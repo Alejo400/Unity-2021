@@ -366,6 +366,7 @@
 "Assets/_Scripts/MoveForward.cs"
 "Assets/_Scripts/NetworkManager.cs"
 "Assets/_Scripts/ObjectsPooling.cs"
+"Assets/_Scripts/OnDestroyObject.cs"
 "Assets/_Scripts/PlayerMove.cs"
 "Assets/_Scripts/PlayerShoot.cs"
 "Assets/_Scripts/respawnEnemies.cs"

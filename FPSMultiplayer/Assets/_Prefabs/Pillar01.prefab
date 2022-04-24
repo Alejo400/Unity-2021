@@ -176,17 +176,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4511383757347200520}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 8715255725995726097}
-  m_Father: {fileID: 7200897151945079691}
-  m_RootOrder: 0
+  m_Father: {fileID: 7200897152453880651}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -1.7900009}
   m_SizeDelta: {x: 2, y: 0.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2089271994762235270
@@ -408,7 +408,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7200897151945079691}
-  - component: {fileID: 7200897151945079690}
   - component: {fileID: 7200897151439737821}
   m_Layer: 7
   m_Name: point1
@@ -425,28 +424,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7200897151945079796}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1.79, z: -0}
+  m_LocalPosition: {x: 0, y: -16.4, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
-  m_Children:
-  - {fileID: 845090272092779240}
+  m_Children: []
   m_Father: {fileID: 7200897152453880651}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7200897151945079690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7200897151945079796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 485e17a5ecb664b4aaa9c9299a48ff3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToInitRespawn: 1
-  timeForEachInstantiate: 3
-  _photonView: {fileID: 2517050637140423263, guid: e53de844234e54a44ae3bf600cb0c10c, type: 3}
 --- !u!65 &7200897151439737821
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -458,8 +441,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 18.665323, y: 0.65124387, z: 13.426522}
-  m_Center: {x: -0.37473565, y: -0.1743774, z: 6.213262}
+  m_Size: {x: 9.492904, y: 0.65124387, z: 3.2352111}
+  m_Center: {x: -0.3464733, y: -0.17437771, z: 3.5536296}
 --- !u!1 &7200897152454047595
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,6 +458,7 @@ GameObject:
   - component: {fileID: 7200897151439737823}
   - component: {fileID: 7200897151439737822}
   - component: {fileID: 2672240231570024591}
+  - component: {fileID: 4296388734126555732}
   m_Layer: 7
   m_Name: Pillar01
   m_TagString: Pilar
@@ -495,6 +479,7 @@ Transform:
   m_Children:
   - {fileID: 4264723012076951906}
   - {fileID: 7200897151945079691}
+  - {fileID: 845090272092779240}
   - {fileID: 7200897152491129063}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -590,7 +575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36e3e610b4312cb439c15d41bcdf14c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 3000
+  amount: 300
   HP: {fileID: 3474034550180189060}
 --- !u!114 &2672240231570024591
 MonoBehaviour:
@@ -605,6 +590,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleDeath: {fileID: 5354575405809152165, guid: bcd0b2329e3c32849a2b558a97d4fec0, type: 3}
+--- !u!114 &4296388734126555732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7200897152454047595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &7200897152491262573
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -654,7 +661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: bf73c6d90c4e0634ba969c77df2d9b63, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: bf73c6d90c4e0634ba969c77df2d9b63, type: 3}
       propertyPath: m_LocalPosition.x

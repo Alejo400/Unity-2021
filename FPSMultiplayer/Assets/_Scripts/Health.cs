@@ -28,11 +28,21 @@ public class Health : MonoBehaviour
             HP.value = amount;
             if (amount <= 0)
             {
-                Destroy(gameObject);
+                if (gameObject.CompareTag("Pilar"))
+                {
+                    GameManager._sharedIntance.PilarsEnemiesInScene--;
+                }
+                if (gameObject.CompareTag("Player"))
+                {
+                    GameManager._sharedIntance.PlayersInScene--;
+                }
+                else {
+                    Destroy(gameObject);
+                }
             }
         }
         else{
-            Debug.Log("Falso");
+            Debug.Log("Falso. Script Health");
         }
     }
     //*************

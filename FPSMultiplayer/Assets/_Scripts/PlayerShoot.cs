@@ -43,13 +43,29 @@ public class PlayerShoot : MonoBehaviour
                     objectOfPool.transform.position = point.transform.position;
                     objectOfPool.transform.rotation = transform.rotation;
                     objectOfPool.SetActive(true);
-                    soundShoot.Play();
+
+                    if (PhotonNetwork.InRoom)
+                    {
+                        photonView.RPC("MultiplayerSFXandVFX", RpcTarget.All, photonView.ViewID);
+                    }
+                    else
+                    {
+                        MultiplayerSFXandVFX(photonView.ViewID);
+                    }
                 }
                 else
                 {
                     return;
                 }
             }
+        }
+    }
+    [PunRPC]
+    void MultiplayerSFXandVFX(int viewID)
+    {
+        if(photonView.ViewID == viewID)
+        {
+            soundShoot.Play();
         }
     }
 }

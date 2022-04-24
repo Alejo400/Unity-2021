@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class AutoHide : MonoBehaviour
 {
+    [SerializeField]
+    public float hideObject;
     private void OnEnable()
     {
-        Invoke("Hide", 4);
+        Invoke("Hide", hideObject);
     }
 
     void Hide()
     {
         gameObject.SetActive(false);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Wall"))
+        {
+            Hide();
+        }
     }
 }

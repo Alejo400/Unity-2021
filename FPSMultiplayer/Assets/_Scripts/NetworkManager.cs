@@ -4,10 +4,11 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
-
+    public Button startMultiplayer;
     private void Start()
     {
         Debug.Log("Conectando a servidor");
@@ -64,6 +65,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("En Sala de Juego");
         Debug.Log($"Sala: {PhotonNetwork.CountOfRooms}, {PhotonNetwork.CurrentRoom.Name}, Players: {PhotonNetwork.CountOfPlayersInRooms}");
-        PhotonNetwork.LoadLevel(1);
+        startMultiplayer.interactable = true;
+        //PhotonNetwork.LoadLevel(1);
     }
 }

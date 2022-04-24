@@ -50,7 +50,14 @@ public class PlayerMove : MonoBehaviour
         MovePosition();
         Animations();
         AimShoot();
-        PlaySFX();
+        if (PhotonNetwork.InRoom)
+        {
+            photonView.RPC("PlaySFX",RpcTarget.All,photonView.ViewID);
+        }
+        else
+        {
+            PlaySFX(photonView.ViewID);
+        }
     }
     /// <summary>
     /// Move in X and Z using physics forces
@@ -122,19 +129,25 @@ public class PlayerMove : MonoBehaviour
     /// <summary>
     /// Ejecutar bajo tiempo los sonidos de caminar, correr
     /// </summary>
-    void PlaySFX()
+    [PunRPC]
+    void PlaySFX(int viewID)
     {
-        if (isMoving)
-        {
-            if (Time.time >= timeToWalk)
+            if (isMoving)
             {
-                timeToWalk = Time.time + timeBetweenWalk;
-                walkSound.Play();
+                if (Time.time >= timeToWalk)
+                {
+                    timeToWalk = Time.time + timeBetweenWalk;
+
+                    if(photonView.ViewID == viewID)
+                    {
+                        walkSound.Play();
+                    }
+                    
+                }
             }
+            if (isRun)
+                timeBetweenWalk = timeBetweenRun;
+            else
+                timeBetweenWalk = defaultTimeBetweenWalk;
         }
-        if (isRun)
-            timeBetweenWalk = timeBetweenRun;
-        else
-            timeBetweenWalk = defaultTimeBetweenWalk;
-    }
 }

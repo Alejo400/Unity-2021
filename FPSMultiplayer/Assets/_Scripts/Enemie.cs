@@ -11,6 +11,8 @@ public class Enemie : MonoBehaviour
     Animator _animator;
     float velocity;
     bool onAttack;
+
+    GameManager gameManager = GameManager._sharedIntance;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,9 +28,12 @@ public class Enemie : MonoBehaviour
         {
             return;
         }
-        Movement();
-        onAttack = agent.remainingDistance >= 2 ? false : true;
-        Attack(onAttack);
+        if(gameManager.currentStateGame != StateGame.gameOver)
+        {
+            Movement();
+            onAttack = agent.remainingDistance >= 2 ? false : true;
+            Attack(onAttack);
+        }
     }
 
     void Movement()

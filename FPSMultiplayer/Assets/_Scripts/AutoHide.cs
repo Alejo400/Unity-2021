@@ -5,22 +5,26 @@ using UnityEngine;
 public class AutoHide : MonoBehaviour
 {
     [SerializeField]
-    public float hideObject;
+    public float timeTohideObject;
     private void OnEnable()
     {
-        Invoke("Hide", hideObject);
+        //Invoke("Hide", hideObject);
+        StartCoroutine(HideTime());
     }
-
-    void Hide()
-    {
-        gameObject.SetActive(false);
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Wall"))
         {
             Hide();
         }
+    }
+    IEnumerator HideTime()
+    {
+        yield return new WaitForSeconds(timeTohideObject);
+        Hide();
+    }
+    void Hide()
+    {
+        gameObject.SetActive(false);
     }
 }

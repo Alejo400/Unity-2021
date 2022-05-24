@@ -39,32 +39,42 @@ public class respawnEnemies : MonoBehaviour
 
     void generateRespawn()
     {
-        if (PhotonNetwork.IsMasterClient)
+        if (PhotonNetwork.InRoom && PhotonNetwork.IsMasterClient || !PhotonNetwork.InRoom)
         {
-            InvokeRepeating("instantiateEnemie", timeToInitRespawn, timeForEachInstantiate);
+            //InvokeRepeating("instantiateEnemie", timeToInitRespawn, timeForEachInstantiate);
+            StartCoroutine(instantiateEnemie());
             if (leader) //objeto líder (dangerous)
             {
-                InvokeRepeating("ReduceTimeForEachInstantiate", timeToReduce, timeToReduce);
+                StartCoroutine(ReduceTimeForEachInstantiate());
+                //InvokeRepeating("ReduceTimeForEachInstantiate", timeToReduce, timeToReduce);
             }
         }
     }
 
-    void instantiateEnemie()
+    IEnumerator instantiateEnemie()
     {
-        spawnPosition = new Vector3(transform.position.x, transform.position.y, 
-            transform.position.z + Random.Range(leftRangeToRespawn,rightRangeToRespawn));
-        if (PhotonNetwork.InRoom)
+        while (true)
         {
-            PhotonNetwork.Instantiate("Alien", spawnPosition, Quaternion.identity);
-        }
-        else
-        {
-            Instantiate(Resources.Load("Alien"), spawnPosition, Quaternion.identity);
+            spawnPosition = new Vector3(transform.position.x, transform.position.y,
+            transform.position.z + Random.Range(leftRangeToRespawn, rightRangeToRespawn));
+            if (PhotonNetwork.InRoom)
+            {
+                PhotonNetwork.Instantiate("Alien", spawnPosition, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(Resources.Load("Alien"), spawnPosition, Quaternion.identity);
+            }
+            yield return new WaitForSeconds(timeForEachInstantiate);
         }
     }
 
-    void ReduceTimeForEachInstantiate()
+    IEnumerator ReduceTimeForEachInstantiate()
     {
-        timeForEachInstantiate = (timeForEachInstantiate / reduce);
+        while (true)
+        {
+            yield return new WaitForSeconds(timeToReduce);
+            timeForEachInstantiate = (timeForEachInstantiate / reduce);
+        }
     }
 }

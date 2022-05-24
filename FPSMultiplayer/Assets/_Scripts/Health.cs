@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
     }
     //*************
     [PunRPC]
-    void TakeDamage(int value, int viewID)
+    public void TakeDamage(int value, int viewID)
     {
         if(_photonview.ViewID == viewID)
         {

@@ -25,7 +25,10 @@ public class DamageOnContact : MonoBehaviour
             if(requiredSound)
                 attackSound.Play();
 
-            _photonviewOther.RPC("TakeDamage", RpcTarget.All,damage,_photonviewOther.ViewID);
+            if (PhotonNetwork.InRoom)
+                _photonviewOther.RPC("TakeDamage", RpcTarget.All, damage, _photonviewOther.ViewID);
+            else
+                _health.TakeDamage(damage,_photonviewOther.ViewID);
             //_health.Amount -= damage;
 
             if (gameObject.tag == "Bullet")

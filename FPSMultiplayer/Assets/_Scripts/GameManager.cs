@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
             if(playersInScene < 0)
             {
                 currentStateGame = StateGame.gameOver;
-                MenuManager._sharedIntance.GameOver("GAME OVER");
+                MenuManager._sharedIntance.FinisGame("GAME OVER",0);
             }
         }
     }
@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
             pilarsEnemiesInScene = value;
             if(pilarsEnemiesInScene <= 0)
             {
-                MenuManager._sharedIntance.GameOver("¡¡VICTORY!!");
+                MenuManager._sharedIntance.FinisGame("¡¡VICTORY!!",1);
             }
         }
     }

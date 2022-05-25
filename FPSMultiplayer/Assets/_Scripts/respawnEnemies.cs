@@ -6,8 +6,9 @@ using Photon.Pun;
 public class respawnEnemies : MonoBehaviour
 {
     [SerializeField]
-    float timeToInitRespawn, timeForEachInstantiate, leftRangeToRespawn, rightRangeToRespawn,
-        reduce,timeToReduce;
+    float timeToInitRespawn, timeForEachInstantiate, leftRangeToRespawn, rightRangeToRespawn,timeToReduce;
+    [SerializeField, Range(1.2f,5f)]
+    float reduce;
     Vector3 spawnPosition;
     public PhotonView _photonView;
     bool respawnIsActive;

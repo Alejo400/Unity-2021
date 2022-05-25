@@ -26,17 +26,24 @@ public class Health : MonoBehaviour
         {
             amount -= value;
             HP.value = amount;
+            
+            if(gameObject.CompareTag("Player"))
+                UIManager._sharedIntance.showScreenDamagePlayer();
+
             if (amount <= 0)
             {
                 if (gameObject.CompareTag("Pilar"))
                 {
                     GameManager._sharedIntance.PilarsEnemiesInScene--;
+                    Destroy(gameObject);
                 }
                 if (gameObject.CompareTag("Player"))
                 {
                     GameManager._sharedIntance.PlayersInScene--;
                 }
-                else {
+                if (gameObject.CompareTag("Enemie"))
+                {
+                    UIManager._sharedIntance.PlayerKills++;
                     Destroy(gameObject);
                 }
             }

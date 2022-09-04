@@ -24,12 +24,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         Debug.Log("Se ha unido al Lobby");
-        FindMatch();
+        startMultiplayer.interactable = true;
     }
 
     public void FindMatch()
     {
-        Debug.Log("Sala encontrada");
         //PhotonNetwork.JoinRandomRoom();
         JoinInRoom();
         //MakeRoom();
@@ -65,7 +64,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("En Sala de Juego");
         Debug.Log($"Sala: {PhotonNetwork.CountOfRooms}, {PhotonNetwork.CurrentRoom.Name}, Players: {PhotonNetwork.CountOfPlayersInRooms}");
-        startMultiplayer.interactable = true;
-        //PhotonNetwork.LoadLevel(1);
+        //Ojo, esto fue agregado el 3 de septiembre, hasta entonces no había nada acá
+        PhotonNetwork.LoadLevel(1);
     }
 }

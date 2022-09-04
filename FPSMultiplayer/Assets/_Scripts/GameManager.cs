@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     float playersInScene;
     public StateGame currentStateGame = StateGame.inGame;
     int pilarsEnemiesInScene;
+    string mission1 = "Destruye todos los pilares para romper la entrada de los Aliens a la tierra y acaba con el jefe final" +
+        "para acabar con la infección";
 
     private void Awake()
     {
@@ -26,13 +28,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 0;
         if (PhotonNetwork.InRoom)
         {
             playersInScene = PhotonNetwork.CountOfPlayersInRooms;
         }
         pilarsEnemiesInScene = GameObject.FindGameObjectsWithTag("Pilar").Length;
-    }
 
+        UIManager._sharedIntance.ShowDialog(mission1);
+    }
     public float PlayersInScene{
         get => playersInScene;
         set {

@@ -8,15 +8,16 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    public GameObject menuGameOver, panelMenuGameOver;
+    public GameObject menuGameOver, panelMenuGameOver, instructions;
     public static MenuManager _sharedIntance;
-    public TextMeshProUGUI titleFinalGame;
+    public TextMeshProUGUI titleFinalGame, titleButtonInstructions;
     Color screenRed, screenBlue;
+    public bool sceneRestarted;
     private void Awake()
     {
         if (_sharedIntance == null)
             _sharedIntance = this;
-        screenRed = new Color32(243,61,61,100); screenBlue = new Color32(58, 92, 144, 100);
+        screenRed = new Color32(243, 61, 61, 100); screenBlue = new Color32(58, 92, 144, 100);
     }
     public void StartGame()
     {
@@ -31,21 +32,36 @@ public class MenuManager : MonoBehaviour
     public void RestarGame()
     {
         Time.timeScale = 1;
-        MenuFinishGame(false,null,0);
+        MenuFinishGame(false, null, 0);
         RestartScene();
+        sceneRestarted = true;
     }
-
+    /// <summary>
+    /// this function tell if the player "win" or "lost"
+    /// </summary>
+    /// <param name="title">message in screen</param>
+    /// <param name="status">win or lost</param>
     public void FinisGame(string title, int status)
     {
-        MenuFinishGame(true,title,status);
+        MenuFinishGame(true, title, status);
         Time.timeScale = 0;
     }
-
-    public void MenuFinishGame(bool enable, string title, int condition) { 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="enable">show menu finish game</param>
+    /// <param name="title">message in screen</param>
+    /// <param name="condition">to change the color of canvas. Blue to win, red to lost</param>
+    public void MenuFinishGame(bool enable, string title, int condition) {
         menuGameOver.SetActive(enable);
         titleFinalGame.text = title;
         panelMenuGameOver.GetComponent<Image>().color = condition == 0 ? screenRed : screenBlue;
     }
+
+    public void ShowInstructions(){
+        instructions.SetActive(!instructions.activeInHierarchy);
+        titleButtonInstructions.text = instructions.activeInHierarchy ? "QUIT" : "GUIDE";
+    } 
 
     void RestartScene()
     {
@@ -56,6 +72,7 @@ public class MenuManager : MonoBehaviour
         else
         {
             SceneManager.LoadScene(1);
+            Debug.Log("Cargada escena local");
         }
     }
 }

@@ -19,6 +19,7 @@ public class Health : MonoBehaviour
         HP.value = amount;
     }
     //*************
+    
     [PunRPC]
     public void TakeDamage(int value, int viewID)
     {
@@ -29,42 +30,45 @@ public class Health : MonoBehaviour
             
             if(gameObject.CompareTag("Player"))
                 UIManager._sharedIntance.showScreenDamagePlayer();
-
-            if (amount <= 0)
-            {
-                if (gameObject.CompareTag("Pilar"))
-                {
-                    GameManager._sharedIntance.PilarsEnemiesInScene--;
-                    Destroy(gameObject);
-                }
-                if (gameObject.CompareTag("Player"))
-                {
-                    GameManager._sharedIntance.PlayersInScene--;
-                }
-                if (gameObject.CompareTag("Enemie"))
-                {
-                    UIManager._sharedIntance.PlayerKills++;
-                    Destroy(gameObject);
-                }
-            }
-        }
-        else{
-            Debug.Log("Falso. Script Health");
+            if (ObjectIsDie())
+                ObjectDie();
         }
     }
-    //*************
-    /*
+    public bool ObjectIsDie()
+    {
+        if (amount <= 0)
+        {
+            return true;
+        }
+        return false;
+    }
+    public void ObjectDie()
+    {
+        if (gameObject.CompareTag("Pilar"))
+        {
+            GameManager._sharedIntance.PilarsEnemiesInScene--;
+            Destroy(gameObject);
+        }
+        if (gameObject.CompareTag("Player"))
+        {
+            GameManager._sharedIntance.PlayersInScene--;
+        }
+        if (gameObject.CompareTag("Enemie"))
+        {
+            UIManager._sharedIntance.PlayerKills++;
+            gameObject.GetComponent<Enemie>().Die();
+        }
+    }
     public int Amount
     {
         get => amount;
-        set {
+        set { 
             amount = value;
             HP.value = amount;
-            if(amount <= 0)
+            if (amount > HP.maxValue)
             {
-               Destroy(gameObject);
+                amount = ((int)HP.maxValue);
             }
         }
     }
-    */
 }

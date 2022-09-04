@@ -116,7 +116,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 80
+  LayerPlayer: 0
+  LayerEnemie: 0
   requiredSound: 1
+  timeToDestroyDamageParticle: 0.3
+  damageParticle: {fileID: 8164803197265387422, guid: af78cf65591a12a4e962fd0236675450, type: 3}
   attackSound: {fileID: 5354437893293294190}
 --- !u!114 &827324901006691246
 MonoBehaviour:
@@ -130,7 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71cd7ebafdb21124d8f079cc1ccccd38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeTohideObject: 0.7
+  timeTohideObject: 0.5
+  obstacle: Wall
 --- !u!136 &3678432766841169116
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -177,7 +182,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7507715446981201193
 Transform:
   m_ObjectHideFlags: 0

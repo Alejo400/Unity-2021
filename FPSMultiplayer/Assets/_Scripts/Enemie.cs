@@ -6,19 +6,27 @@ using Photon.Pun;
 
 public class Enemie : MonoBehaviour
 {
+    [SerializeField]
+    float timeToDestroy;
     NavMeshAgent agent;
     GameObject[] players;
     Animator _animator;
+    Health _health;
+    Rigidbody _rigibody;
     float velocity;
     bool onAttack;
+    GameManager gameManager;
+    Vector3 target;
 
-    GameManager gameManager = GameManager._sharedIntance;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
+        gameManager = GameManager._sharedIntance;
         agent = GetComponent<NavMeshAgent>();
         players = GameObject.FindGameObjectsWithTag("Player");
         _animator = GetComponent<Animator>();
+        _health = GetComponent<Health>();
+        _rigibody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -28,9 +36,10 @@ public class Enemie : MonoBehaviour
         {
             return;
         }
-        if(gameManager.currentStateGame != StateGame.gameOver)
+        if (gameManager.currentStateGame != StateGame.gameOver && !_health.ObjectIsDie())
         {
             Movement();
+            transform.forward = LookAt();
             onAttack = agent.remainingDistance >= 2 ? false : true;
             Attack(onAttack);
         }
@@ -38,18 +47,36 @@ public class Enemie : MonoBehaviour
 
     void Movement()
     {
-        agent.destination = players[Random.Range(0,PhotonNetwork.CountOfPlayersInRooms)].transform.position;
+        //ojo modificar
+        target = players[0].transform.position;
+        agent.destination = target;
+        //
         velocity = agent.velocity.magnitude;
         _animator.SetFloat("velocity", velocity);
         _animator.SetFloat("moveX", agent.velocity.x);
         _animator.SetFloat("moveY", agent.velocity.z);
     }
     /// <summary>
-    /// Atacar dependiendo de la distancia entre el enemigo y su objetivo
+    /// Attack depending IA RemainingDistance
     /// </summary>
-    /// <param name="attack">booleano que determina si atacar o no al player</param>
+    /// <param name="attack">if attack or not</param>
     void Attack(bool attack) {
         _animator.SetBool("Attack", attack);
         agent.isStopped = attack;
+    }
+    public void Die(){
+        agent.isStopped = true;
+        gameObject.GetComponent<BoxCollider>().isTrigger = true;
+        _animator.SetTrigger("Die");
+        Destroy(gameObject,timeToDestroy);
+    }
+    /// <summary>
+    /// Look target
+    /// </summary>
+    Vector3 LookAt()
+    {
+        Vector3 directionToLook = Vector3.Normalize(target - transform.position);
+        directionToLook.y = 0;
+        return directionToLook;
     }
 }

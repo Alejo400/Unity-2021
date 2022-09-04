@@ -15,7 +15,7 @@ public class OnDestroyObject : MonoBehaviour
     }
     private void OnDestroy()
     {
-        if (isQuit)
+        if (isQuit || MenuManager._sharedIntance.sceneRestarted)
         {
             return;
         }

@@ -5,10 +5,10 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    public TextMeshProUGUI playerKillsText;
+    public TextMeshProUGUI playerKillsText, dialogMessage;
     int playerKills;
     public static UIManager _sharedIntance;
-    public GameObject screenDamagePlayer;
+    public GameObject screenDamagePlayer, dialog;
 
     private void Awake()
     {
@@ -27,10 +27,22 @@ public class UIManager : MonoBehaviour
             playerKillsText.text = playerKills.ToString();
         }
     }
+    /// <summary>
+    /// color red screen when the player receive damage
+    /// </summary>
     public void showScreenDamagePlayer()
     {
        screenDamagePlayer.SetActive(true);
        Invoke("HideScreenDamagePlayer",0.2f);
     }
+    public void ShowDialog(string message)
+    {
+        dialog.SetActive(true);
+        dialogMessage.text = message;
+    }
+    public void HideDialog() {
+        Time.timeScale = 1;
+        dialog.SetActive(false);
+    } 
     public void HideScreenDamagePlayer() => screenDamagePlayer.SetActive(false);
 }

@@ -6,14 +6,15 @@ public class AutoHide : MonoBehaviour
 {
     [SerializeField]
     public float timeTohideObject;
+    public string obstacle;
     private void OnEnable()
     {
-        //Invoke("Hide", hideObject);
         StartCoroutine(HideTime());
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Wall"))
+        //Hide bullet when hit with any wall
+        if (other.CompareTag(obstacle))
         {
             Hide();
         }

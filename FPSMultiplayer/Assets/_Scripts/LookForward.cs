@@ -8,7 +8,6 @@ using Photon.Pun;
 public class LookForward : MonoBehaviour
 {
     public Transform player;
-    Vector3 direction;
     // Update is called once per frame
     public LineRenderer laserLineRenderer;
     [SerializeField]
@@ -29,6 +28,9 @@ public class LookForward : MonoBehaviour
         }
         GenerateLaser();
     }
+    /// <summary>
+    /// visible red laser in the game to show if we are aiming at the enemie
+    /// </summary>
     void GenerateLaser()
     {
         //Ray ray = new Ray(transform.position, transform.TransformDirection(Vector3.forward));

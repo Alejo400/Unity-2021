@@ -1101,6 +1101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ecb3ba1a8d663428c27c0ce44ae3f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToDestroy: 2
 --- !u!114 &4067870924215312714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1168,6 +1169,12 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 1
     Name: Attack
+  - Type: 9
+    SynchronizeType: 0
+    Name: Die
+  - Type: 4
+    SynchronizeType: 0
+    Name: Invoke
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
@@ -2357,5 +2364,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 50
+  LayerPlayer: 0
+  LayerEnemie: 0
   requiredSound: 1
+  timeToDestroyDamageParticle: 0
+  damageParticle: {fileID: 0}
   attackSound: {fileID: 2431042407887391793}

@@ -6,16 +6,21 @@ using Photon.Pun;
 public class PlayerShoot : MonoBehaviour
 {
     GameObject objectOfPool;
-    public GameObject point;
+    public GameObject startPoint;
     PlayerMove Player;
     public AudioSource soundShoot;
 
     [SerializeField]
-    float timeBetweenFire = 5, timeToFire = 0;
+    float timeBetweenFire, timeToFire = 0;
+    float defaultTimeBetweenFire;
     public PhotonView photonView;
+
+    public float TimeBetweenFire { get => timeBetweenFire; set => timeBetweenFire = value; }
+    public float DefaultTimeBetweenFire { get => defaultTimeBetweenFire; set => defaultTimeBetweenFire = value; }
 
     private void Awake()
     {
+        DefaultTimeBetweenFire = timeBetweenFire;
         Player = gameObject.GetComponent<PlayerMove>();
     }
 
@@ -40,7 +45,7 @@ public class PlayerShoot : MonoBehaviour
                     timeToFire = Time.time + timeBetweenFire;
 
                     objectOfPool = ObjectsPooling._sharedIntance.GetFirstPrefabOfPool();
-                    objectOfPool.transform.position = point.transform.position;
+                    objectOfPool.transform.position = startPoint.transform.position;
                     objectOfPool.transform.rotation = transform.rotation;
                     objectOfPool.SetActive(true);
 
@@ -60,6 +65,7 @@ public class PlayerShoot : MonoBehaviour
             }
         }
     }
+
     [PunRPC]
     void MultiplayerSFXandVFX(int viewID)
     {

@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Photon.Pun;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class RoomManager : MonoBehaviourPunCallbacks
@@ -26,7 +24,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Vector3 spawnPosition = new Vector3(0,0,Random.Range(1,5));
+        Vector3 spawnPosition = new Vector3(0, 0, Random.Range(1, 5));
         if (PhotonNetwork.InRoom)
         {
             PhotonNetwork.Instantiate("HPCharacter", spawnPosition, Quaternion.identity);
@@ -34,7 +32,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            Instantiate(Resources.Load("HPCharacter"),spawnPosition,Quaternion.identity);
+            Instantiate(Resources.Load("HPCharacter"), spawnPosition, Quaternion.identity);
         }
     }
 }

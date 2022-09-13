@@ -37,6 +37,10 @@ public class GameManager : MonoBehaviour
 
         UIManager._sharedIntance.ShowDialog(mission1);
     }
+    private void Update()
+    {
+        PauseGame();
+    }
     public float PlayersInScene{
         get => playersInScene;
         set {
@@ -55,11 +59,26 @@ public class GameManager : MonoBehaviour
         set
         {
             pilarsEnemiesInScene = value;
-            if(pilarsEnemiesInScene <= 0)
+            if (pilarsEnemiesInScene <= 0)
             {
+                currentStateGame = StateGame.gameOver;
                 MenuManager._sharedIntance.FinisGame("¡¡VICTORY!!",1);
             }
         }
     }
 
+    void PauseGame()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && currentStateGame != StateGame.gameOver)
+        {
+            if (PhotonNetwork.InRoom)
+            {
+                //TODO
+            }
+            else
+            {
+                MenuManager._sharedIntance.PauseGame();
+            } 
+        }
+    }
 }

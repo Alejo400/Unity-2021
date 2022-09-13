@@ -8,9 +8,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    public GameObject menuGameOver, panelMenuGameOver, instructions;
+    public GameObject menuGameOver, panelMenuGameOver, instructions, menuPause;
     public static MenuManager _sharedIntance;
     public TextMeshProUGUI titleFinalGame, titleButtonInstructions;
+    public List<AudioSource> audioSources = new List<AudioSource>();
     Color screenRed, screenBlue;
     public bool sceneRestarted;
     private void Awake()
@@ -51,11 +52,12 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     /// <param name="enable">show menu finish game</param>
     /// <param name="title">message in screen</param>
-    /// <param name="condition">to change the color of canvas. Blue to win, red to lost</param>
+    /// <param name="condition">to change the color of canvas. 0 to lose (red), 1 to win (blue)</param>
     public void MenuFinishGame(bool enable, string title, int condition) {
         menuGameOver.SetActive(enable);
         titleFinalGame.text = title;
         panelMenuGameOver.GetComponent<Image>().color = condition == 0 ? screenRed : screenBlue;
+        audioSources[0].Play();
     }
 
     public void ShowInstructions(){
@@ -74,5 +76,16 @@ public class MenuManager : MonoBehaviour
             SceneManager.LoadScene(1);
             Debug.Log("Cargada escena local");
         }
+    }
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        menuPause.SetActive(true);
+
+    }
+    public void ReturnGame()
+    {
+        Time.timeScale = 1;
+        menuPause.SetActive(false);
     }
 }

@@ -87,6 +87,7 @@
     <Compile Include="Assets\Downloads\Particlecollection_Free samples\Plugins\Effect\Script\CameraTarget.cs" />
     <Compile Include="Assets\_Scripts\SpawnBosses.cs" />
     <Compile Include="Assets\Downloads\Particlecollection_Free samples\Plugins\Effect\Script\EffectController.cs" />
+    <Compile Include="Assets\_Scripts\InstantiateTemporalObject.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
     <Compile Include="Assets\Downloads\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Downloads\Sci-Fi UI\Demo_Assets\scripts\GUI_Demo.cs" />
@@ -111,7 +112,6 @@
     <Compile Include="Assets\_Scripts\Enemie.cs" />
     <Compile Include="Assets\Downloads\SpecialEffectPack\EffectEditor\ShurikenEffectEditor\csShurikenEffectChanger.cs" />
     <Compile Include="Assets\Downloads\SpecialEffectPack\Animation&amp;Script\csDestroyEffect.cs" />
-    <Compile Include="Assets\_Scripts\InstantiateTemporalObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Downloads\Particlecollection_Free samples\Plugins\Effect\Shader\Toon Blended Premmultiply.shader" />

@@ -942,7 +942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36e3e610b4312cb439c15d41bcdf14c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 5000
+  amount: 1000
   HP: {fileID: 3381151486724332448}
 --- !u!195 &2086808278467217224
 NavMeshAgent:

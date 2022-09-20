@@ -4089,11 +4089,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4989760570149699343, guid: 25b08c33d926db441956ee4fce59e256, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4989760570149699343, guid: 25b08c33d926db441956ee4fce59e256, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6708010010234246105, guid: 25b08c33d926db441956ee4fce59e256, type: 3}
       propertyPath: requiredSound
@@ -4193,7 +4193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7200897152454047595, guid: 25b08c33d926db441956ee4fce59e256, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25b08c33d926db441956ee4fce59e256, type: 3}
@@ -4221,7 +4221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameOfObjetc: Alien
   _object: {fileID: 1262499455}
-  timeToInitRespawn: 10
+  timeToInitRespawn: 50
   timeForEachInstantiate: 10
   increaseRandomLeftPosition: 1
   increaseRandomRightPosition: 1
@@ -9433,11 +9433,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4989760570149699343, guid: 25b08c33d926db441956ee4fce59e256, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4989760570149699343, guid: 25b08c33d926db441956ee4fce59e256, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6708010010234246105, guid: 25b08c33d926db441956ee4fce59e256, type: 3}
       propertyPath: requiredSound
@@ -9537,7 +9537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7200897152454047595, guid: 25b08c33d926db441956ee4fce59e256, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25b08c33d926db441956ee4fce59e256, type: 3}
@@ -9578,7 +9578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameOfObjetc: Alien
   _object: {fileID: 844423433}
-  timeToInitRespawn: 10
+  timeToInitRespawn: 50
   timeForEachInstantiate: 10
   increaseRandomLeftPosition: 1
   increaseRandomRightPosition: 1
@@ -19409,11 +19409,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4989760570149699343, guid: 25b08c33d926db441956ee4fce59e256, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4989760570149699343, guid: 25b08c33d926db441956ee4fce59e256, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6708010010234246105, guid: 25b08c33d926db441956ee4fce59e256, type: 3}
       propertyPath: requiredSound
@@ -19505,7 +19505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7200897152454047595, guid: 25b08c33d926db441956ee4fce59e256, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25b08c33d926db441956ee4fce59e256, type: 3}
@@ -19533,7 +19533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameOfObjetc: Alien
   _object: {fileID: 1689743162}
-  timeToInitRespawn: 10
+  timeToInitRespawn: 50
   timeForEachInstantiate: 10
   increaseRandomLeftPosition: 1
   increaseRandomRightPosition: 1
@@ -26214,7 +26214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7200897151439737822, guid: 25b08c33d926db441956ee4fce59e256, type: 3}
       propertyPath: amount
-      value: 3000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7200897151945079691, guid: 25b08c33d926db441956ee4fce59e256, type: 3}
       propertyPath: m_LocalScale.x
@@ -26302,7 +26302,7 @@ MonoBehaviour:
   nameOfObjetc: Alien
   _object: {fileID: 7200897151439737820}
   timeToInitRespawn: 1
-  timeForEachInstantiate: 2
+  timeForEachInstantiate: 3
   increaseRandomLeftPosition: -1.7
   increaseRandomRightPosition: 2
   increaseRandomDownPosition: 1
@@ -26334,7 +26334,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7603369327570500720, guid: 5bb30b178a5dcb14e833b3907bb7cd81, type: 3}
       propertyPath: timeToInstantiate
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7603369327570500721, guid: 5bb30b178a5dcb14e833b3907bb7cd81, type: 3}
       propertyPath: m_RootOrder
@@ -26386,7 +26386,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7603369327570500726, guid: 5bb30b178a5dcb14e833b3907bb7cd81, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bb30b178a5dcb14e833b3907bb7cd81, type: 3}
